@@ -19,7 +19,7 @@ app.use(cookieParser());
 
 mongoose
   .connect(
-    "mongodb+srv://rkdgml:choi0730!A@cluster0.zctomf9.mongodb.net/?retryWrites=true&w=majority"
+    "mongodb+srv://parkracoon:pt1221@kangho.k4mc7hv.mongodb.net/?retryWrites=true&w=majority"
   )
   .then(() => console.log("MongoDB Connected..."))
   .catch((err) => console.log(err));
@@ -27,7 +27,6 @@ mongoose
 app.use(require("./routes/users"))
 app.use(require("./routes/board"))
 app.use(require("./routes/comment"))
+app.use(require("./routes/marker"))
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
-
-test
