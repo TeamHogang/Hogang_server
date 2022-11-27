@@ -18,7 +18,14 @@ router.post("/comment", (req, res) => {
 
 //댓글 조회
 router.get("/comment", async (req,res)=>{
-  
+
+})
+
+//댓글 삭제
+router.delete("/comment/:id", (req, res)=>{
+  Comment.deleteOne({_id: req.params.id}, (req, res)=>{
+    if(err) return res.json(err);
+  })
 })
 
 // //피드 수정
