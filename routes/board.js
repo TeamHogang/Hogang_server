@@ -12,11 +12,11 @@ router.post("/board", (req, res) => {
 });
 
 //피드 수정
-router.put("/board/:id", (req, res) => {
+router.patch("/board/:id", (req, res) => {
   req.body.updateAt = Date.now();
   Board.findOneAndUpdate({ _id: req.params.id }, req.body, (err, board) => {
     if (err) return res.json(err);
-
+    console.log(req.params.id);
     return res.status(200).send({ board: board });
   });
 });
