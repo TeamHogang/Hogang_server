@@ -7,6 +7,9 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");
 
+const fs = require("fs");
+const data = JSON.parse(fs.readFileSync("data\\non-smoking.json", "utf8"));
+
 
 const corsOptions = {
   origin: "http://localhost:3000",
