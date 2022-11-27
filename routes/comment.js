@@ -4,7 +4,7 @@ const { Board } = require("../models/Board");
 const { Comment } = require("../models/Comment");
 const router = express.Router();
 
-
+// 댓글 작성
 router.post("/comment", (req, res) => {
   const comment = new Comment(req.body)
   
@@ -15,6 +15,11 @@ router.post("/comment", (req, res) => {
     });
   });
 }); 
+
+//댓글 조회
+router.get("/comment", async (req,res)=>{
+  
+})
 
 // //피드 수정
 // router.put("/board/:id", (req, res) => {
