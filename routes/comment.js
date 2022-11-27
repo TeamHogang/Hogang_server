@@ -31,7 +31,7 @@ router.delete("/comment/:id", (req, res)=>{
 //댓글 수정
 router.put("/comment/:id", (req, res) => {
   req.body.updateAt = Date.now();
-  Comment.findOneAndUpdate({ _id: req.params.id }, req.body, (err, board) => {
+  Comment.findOneAndUpdate({ _id: req.params.id }, req.body, (err, comment) => {
     if (err) return res.json(err);
 
     return res.status(200).send({ comment: comment });
