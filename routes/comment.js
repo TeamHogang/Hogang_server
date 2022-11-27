@@ -4,9 +4,12 @@ const { Board } = require("../models/Board");
 const { Comment } = require("../models/Comment");
 const router = express.Router();
 
-
+// 댓글 작성
 router.post("/comment", (req, res) => {
   const comment = new Comment(req.body)
+  
+  // req.body.userFrom = req.user._id;
+  // req.body.boardFrom = Board._id
   
   comment.save((err, commentInfo) => {
     if (err) return res.json({ success: false, err});
@@ -15,6 +18,25 @@ router.post("/comment", (req, res) => {
     });
   });
 }); 
+
+
+
+//댓글 삭제
+router.delete("/comment/:id", (req, res)=>{
+  Comment.deleteOne({_id: req.params.id}, (req, res)=>{
+    if(err) return res.json(err);
+  })
+})
+
+//댓글 수정
+router.patch("/comment/:id", (req, res) => {
+  req.body.updateAt = Date.now();
+  Comment.findOneAndUpdate({ _id: req.params.id }, req.body, (err, comment) => {
+    if (err) return res.json(err);
+
+    return res.status(200).send({ comment: comment });
+  });
+});
 
 // //피드 수정
 // router.put("/board/:id", (req, res) => {
