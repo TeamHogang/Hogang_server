@@ -20,7 +20,7 @@ app.use(cookieParser());
 mongoose
   .connect(
     // "mongodb+srv://parkracoon:pt1221@kangho.k4mc7hv.mongodb.net/?retryWrites=true&w=majority"
-    // "mongodb+srv://rkdgml:choi0730!A@cluster0.zctomf9.mongodb.net/?retryWrites=true&w=majority"
+     "mongodb+srv://rkdgml:choi0730!A@cluster0.zctomf9.mongodb.net/?retryWrites=true&w=majority"
 
   )
   .then(() => console.log("MongoDB Connected..."))
