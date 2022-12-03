@@ -28,3 +28,5 @@ router.post("/map/putMarkerDetail", (req, res) => {
     return res.status(200).send({ requestedmarker: requestedmarker });
   })
 });
+
+module.exports =router

@@ -21,7 +21,8 @@ const userSchema = mongoose.Schema({
         type: Number
     },
     isAdmin: {
-        type: Boolean
+        type: Number,
+        default : 0,
     },
     // user token 생성
     isAdmin : {
