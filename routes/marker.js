@@ -13,4 +13,29 @@ const addMarker = async () => {
 }
 addMarker();
 
+router.get("/map/MarkerList", (req, res) => {
+  Marker.find({})
+    .exec((err, marker) => {
+      if (err) return res.json(err);
+      return res.status(200).send({ marker: marker });
+    });
+});
+
+//마커 삭제
+router.delete("/map/:id", (req, res)=>{
+  Marker.deleteOne({_id: req.params.id}, (req, res)=>{
+    if(err) return res.json(err);
+  })
+})
+
+//마커 수정
+router.patch("/map/:id", (req, res) => {
+  req.body.updateAt = Date.now();
+  Marker.findOneAndUpdate({ _id: req.params.id }, req.body, (err, comment) => {
+    if (err) return res.json(err);
+
+    return res.status(200).send({ comment: comment });
+  });
+});
+
 module.exports = router;
