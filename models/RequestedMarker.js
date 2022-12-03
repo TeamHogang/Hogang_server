@@ -1,7 +1,7 @@
 const { Schema } = require("mongoose");
 const mongoose = require("mongoose");
 
-const MarkerSchema = mongoose.Schema(
+const RequestedMarkerSchema = mongoose.Schema(
   {
     prhsmkar: {
       type: Number,
@@ -17,7 +17,7 @@ const MarkerSchema = mongoose.Schema(
     },
     type: {
       type: Number,
-      default: 0,
+      default: 1,
     },
     img: {
       type: String,
@@ -26,5 +26,5 @@ const MarkerSchema = mongoose.Schema(
   },
 );
 
-const Marker = mongoose.model("Marker", MarkerSchema);
-module.exports = { Marker };
+const RequestedMarker = mongoose.model("Marker", RequestedMarkerSchema);
+module.exports = { RequestedMarker };
