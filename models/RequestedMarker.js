@@ -26,5 +26,5 @@ const RequestedMarkerSchema = mongoose.Schema(
   },
 );
 
-const RequestedMarker = mongoose.model("Marker", RequestedMarkerSchema);
+const RequestedMarker = mongoose.model("RequestedMarker", RequestedMarkerSchema);
 module.exports = { RequestedMarker };
