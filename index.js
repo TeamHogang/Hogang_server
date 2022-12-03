@@ -16,6 +16,7 @@ const corsOptions = {
   credentials: true,
 };
 
+
 app.use(cookieParser());
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
@@ -23,8 +24,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 mongoose
   .connect(
-    "mongodb+srv://parkracoon:pt1221@kangho.k4mc7hv.mongodb.net/?retryWrites=true&w=majority"
-    //  "mongodb+srv://rkdgml:choi0730!A@cluster0.zctomf9.mongodb.net/?retryWrites=true&w=majority"
+    // "mongodb+srv://parkracoon:pt1221@kangho.k4mc7hv.mongodb.net/?retryWrites=true&w=majority"
+     "mongodb+srv://rkdgml:choi0730!A@cluster0.zctomf9.mongodb.net/?retryWrites=true&w=majority"
   )
   .then(() => console.log("MongoDB Connected..."))
   .catch((err) => console.log(err));
@@ -35,5 +36,6 @@ app.use(require("./routes/comment"))
 app.use(require("./routes/marker"))
 app.use(require("./routes/main"))
 app.use(require("./routes/requestedmarker"))
+app.use(require("./routes/admin"))
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
