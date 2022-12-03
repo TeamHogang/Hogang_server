@@ -22,6 +22,7 @@ const addMarker = async () => {
 }
 addMarker();
 
+
 router.get("/map/MarkerList", (req, res) => {
   Marker.find({})
     .exec((err, marker) => {

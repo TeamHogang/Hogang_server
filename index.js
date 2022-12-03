@@ -8,17 +8,18 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 
 const fs = require("fs");
-const data = JSON.parse(fs.readFileSync("data\\non-smoking.json", "utf8"));
+const data = JSON.parse(fs.readFileSync("./data/non-smoking.json", "utf8"));
 
 
 const corsOptions = {
   origin: "http://localhost:3000",
   credentials: true,
 };
+
+app.use(cookieParser());
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cookieParser());
 
 mongoose
   .connect(
@@ -32,5 +33,7 @@ app.use(require("./routes/users"))
 app.use(require("./routes/board"))
 app.use(require("./routes/comment"))
 app.use(require("./routes/marker"))
+app.use(require("./routes/main"))
+
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

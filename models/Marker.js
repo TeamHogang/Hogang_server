@@ -23,6 +23,7 @@ const MarkerSchema = mongoose.Schema(
       type: String,
       require: false,
     }
+
   },
 );
 
