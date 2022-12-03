@@ -1,6 +1,7 @@
 const express = require("express");
 const { User } = require("../models/User");
 const { Board } = require("../models/Board");
+const { Comment } = require("../models/Comment");
 const router = express.Router();
 
 
@@ -12,7 +13,7 @@ router.post("/board", (req, res) => {
 });
 
 //피드 수정
-router.put("/board/:id", (req, res) => {
+router.patch("/board/:id", (req, res) => {
   req.body.updateAt = Date.now();
   Board.findOneAndUpdate({ _id: req.params.id }, req.body, (err, board) => {
     if (err) return res.json(err);
@@ -24,10 +25,17 @@ router.put("/board/:id", (req, res) => {
 //글 조회
 router.get("/board/:id", async (req, res) => {
   const board = await Board.findOne({ _id: req.params.id });
-  if (!board) return res.json(err);
+  // if (!board) return res.json(err);
+  
   const user = await User.findOne({ _id: board.userFrom });
-  if (!user) return res.json(err);
-  return res.status(200).send({ board: board, userEmail: user.email });
+  // if (!user) return res.json(err);
+  // const comment = [Comment.find({boardFrom : req.params.id})];
+  // return res.status(200).send({ board: board, userEmail: user.email, comment: comment });
+  Promise.all([Comment.find({boardFrom: req.params.id}),
+              board,user])
+  .then(([comment,board,userEmail])=>{res.status(200).send({comment : comment, board: board, userEmail: user.email})})
+
+  
 });
 
 //피드 삭제
@@ -41,7 +49,7 @@ router.delete("/board/:id", (req, res) => {
 router.get("/board", (req, res) => {
   Feed.find({})
     .sort("-createdAt")
-    .exec((err, feeds) => {
+    .exec((err, board) => {
       if (err) return res.json(err);
       return res.status(200).send({ board: board });
     });

@@ -12,7 +12,6 @@ const BoardSchema = mongoose.Schema(
       type: String,
     },
     // 게시물 제목
-
     contents: {
       type: String,
     },
