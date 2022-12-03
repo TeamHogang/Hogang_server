@@ -8,7 +8,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 
 const fs = require("fs");
-const data = JSON.parse(fs.readFileSync("data\\non-smoking.json", "utf8"));
+const data = JSON.parse(fs.readFileSync("./data/non-smoking.json", "utf8"));
 
 
 const corsOptions = {
@@ -33,5 +33,7 @@ app.use(require("./routes/users"))
 app.use(require("./routes/board"))
 app.use(require("./routes/comment"))
 app.use(require("./routes/marker"))
+app.use(require("./routes/main"))
+
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
