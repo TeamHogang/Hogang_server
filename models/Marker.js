@@ -15,6 +15,9 @@ const MarkerSchema = mongoose.Schema(
     latitude: {
       type: String,
     },
+    // isSmoking: {
+    //   type: Boolean,
+    // },
   },
 );
 
