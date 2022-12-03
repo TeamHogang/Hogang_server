@@ -4,7 +4,7 @@ const { Board } = require("../models/Board");
 const { Comment } = require("../models/Comment");
 const router = express.Router();
 
-
+// 글 생성
 router.post("/board", (req, res) => {
   Board.create(req.body, async(err, board) => {
     if(err) return res.json(err);
@@ -46,13 +46,18 @@ router.delete("/board/:id", (req, res) => {
 });
 
 //피드 전체 리스트
-router.get("/board", (req, res) => {
-  Feed.find({})
-    .sort("-createdAt")
-    .exec((err, board) => {
-      if (err) return res.json(err);
-      return res.status(200).send({ board: board });
-    });
+router.get("/board", async(req, res) => {
+  // Board.find({})
+  //   .sort("-createdAt")
+  //   .exec((err, board) => {
+  //     if (err) return res.json(err);
+  //     return res.status(200).send({ board: board });
+  //   });
+    const board = await Board.find({})
+
+    Promise.all([Board.find({})])
+    .then(([boardtitle])=>{res.status(200).send({boardtitle : board.title})})
 });
+
 
 module.exports = router;
