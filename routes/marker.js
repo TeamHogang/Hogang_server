@@ -2,16 +2,19 @@ const express = require("express");
 const router = express.Router();
 const { Marker } = require("../models/Marker");
 const fs = require("fs");
-const data = JSON.parse(fs.readFileSync("data\\non-smoking.json", "utf8"));
+const data = JSON.parse(fs.readFileSync("./data/non-smoking.json", "utf8"));
 
-const addMarker = async () => {
-  try {
-    await Marker.create(data["DATA"])
-  } catch (err) {
-    console.log(err);
-  }
-}
-addMarker();
+// const addMarker = async () => {
+//   for(idx in data["DATA"]){
+//     data["DATA"][idx]["prhsmkar"] = String(Math.sqrt(data["DATA"][idx]["prhsmkar"]/Math.PI))
+//   }
+//   try {
+//     await Marker.create(data["DATA"])
+//   } catch (err) {
+//     console.log(err);
+//   }
+// }
+// addMarker();
 
 router.get("/map/MarkerList", (req, res) => {
   Marker.find({})
