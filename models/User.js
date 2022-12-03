@@ -21,6 +21,13 @@ const userSchema = mongoose.Schema({
         type: Number
     },
     // user token 생성
+    isAdmin : {
+        type : Number,
+        default : 0,
+    },
+    nickname : {
+        type : String,
+    }
 },
 { timestamps: true })
 

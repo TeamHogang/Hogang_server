@@ -47,7 +47,7 @@ router.delete("/board/:id", (req, res) => {
 
 //피드 전체 리스트
 router.get("/board", (req, res) => {
-  Feed.find({})
+  Board.find({})
     .sort("-createdAt")
     .exec((err, board) => {
       if (err) return res.json(err);
