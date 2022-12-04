@@ -9,11 +9,19 @@ router.get("/admin", async(req,res)=>{
         .populate('userFrom','nickname')
         .exec((err, requestedmarker)=>{
             if (err) return res.json(err);
-            console.log(requestedmarker)
+            // console.log(requestedmarker)
             return res.status(200).send({ requestedmarker : requestedmarker});
           
         });
 });
+
+router.delete("/admin/reject/:id", (req,res)=>{
+    RequestedMarker.deleteOne({ _id: req.params.id }, (req, res), (err) => {
+        if (err) return res.json(err);
+    
+        return res.status(200).send("ok");
+      });
+})
 
 
 
