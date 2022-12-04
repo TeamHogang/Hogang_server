@@ -50,7 +50,7 @@ router.post("/map/putMarkerDetail", (req, res) => {
       console.log(err)
     }
     else {
-      RequestedMarker.create(req.body, async(err, board) => {
+      RequestedMarker.create(req.body, async(err, requestedmarker) => {
         if(err) return res.json(err);
         return res.status(200).send({ requestedmarker: requestedmarker });
       })
