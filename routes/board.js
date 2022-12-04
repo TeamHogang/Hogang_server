@@ -54,7 +54,12 @@ router.get("/board", async(req, res) => {
       if (err) return res.json(err);
       return res.status(200).send({ board: board });
     });
-   
+
+    // const board = await Board.find({})
+
+    // Promise.all([Board.find({})])
+    // .then(([boardtitle])=>{res.status(200).send({boardtitle : board.title})})
+
 });
 
 
