@@ -35,7 +35,8 @@ app.use(require("./routes/board"))
 app.use(require("./routes/comment"))
 app.use(require("./routes/marker"))
 app.use(require("./routes/main"))
-app.use(require("./routes/requestedmarker"))
 app.use(require("./routes/admin"))
+app.use(require("./routes/requestedmarker"))
+
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
