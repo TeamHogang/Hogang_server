@@ -25,10 +25,7 @@ const userSchema = mongoose.Schema({
         default : 0,
     },
     // user token 생성
-    isAdmin : {
-        type : Number,
-        default : 0,
-    },
+    
     nickname : {
         type : String,
     }

@@ -5,11 +5,14 @@ const { Comment } = require("../models/Comment");
 const router = express.Router();
 
 // 댓글 작성
-router.post("/comment", (req, res) => {
-  const comment = new Comment(req.body)
+router.post("/:id/comment", (req, res) => {
+  const comment = new Comment({
+    userFrom : req.body.userFrom,
+    boardFrom : req.params.id,
+    contents : req.body.contents
+  })
   
-  // req.body.userFrom = req.user._id;
-  // req.body.boardFrom = Board._id
+  
   
   comment.save((err, commentInfo) => {
     if (err) return res.json({ success: false, err});
@@ -23,7 +26,7 @@ router.post("/comment", (req, res) => {
 
 //댓글 삭제
 router.delete("/comment/:id", (req, res)=>{
-  Comment.deleteOne({_id: req.params.id}, (req, res)=>{
+  Comment.deleteOne({_id: req.params.id}, (req, res) , (err)=>{
     if(err) return res.json(err);
   })
 })

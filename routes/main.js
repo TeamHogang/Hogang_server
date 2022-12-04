@@ -3,7 +3,7 @@ const router = express.Router();
 const {User} =require("../models/User");
 const {Board} = require ("../models/Board");
 
-router.get("/:id", async(req, res) =>{
+router.get("/main/:id", async(req, res) =>{
     // Board.find({})
     // .sort("-createdAt")
     // .exec((err, board) => {
