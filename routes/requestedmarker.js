@@ -44,7 +44,7 @@ module.exports = upload
 //   })
 // });
 
-router.post("/board", (req, res) => {
+router.post("/map/putMarkerDetail", (req, res) => {
   upload(req, res, (err) => {
     if(err) {
       console.log(err)
