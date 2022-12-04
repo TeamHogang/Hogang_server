@@ -42,7 +42,7 @@ router.post("/users/login", async (req, res) => {
       if (err) return res.status(400).send(err);
 
       res// 토큰을 쿠키에 저장
-        .cookie("X-AUTH-TOKEN", user.token)
+        .cookie("x_auth", user.token)
         .status(200)
         .json({ loginSuccess: true, userId: user._id });
     });
