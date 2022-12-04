@@ -17,32 +17,45 @@ const upload = multer({
 
 module.exports = upload
 // 마커 추가 요청
-router.post("/map/putMarkerDetail", (req, res) => {
+// router.post("/map/putMarkerDetail", (req, res) => {
+//   upload(req, res, (err) => {
+//     if(err){
+//       console.log(err)
+//     }
+//     else{
+//       const newMarker = new RequestedMarker({
+//         prhsmkar: req.body.locationDetail,
+//         longitude: req.body.longitude,
+//         latitude: req.body.latitude,
+//         type: req.body.type,
+//         img: {
+//           data: req.file.filename,
+//           contentType: req.file.mimetype
+//         }
+//       })
+//       newMarker.save().then(result => {
+//         res.status(200).json({
+//           msg: 'successfully uploaded'
+//         })
+//       }).catch(err => {
+//         console.log(err);
+//       })
+//     }
+//   })
+// });
+
+router.post("/board", (req, res) => {
   upload(req, res, (err) => {
-    if(err){
+    if(err) {
       console.log(err)
     }
-    else{
-      const newMarker = new RequestedMarker({
-        prhsmkar: req.body.locationDetail,
-        longitude: req.body.longitude,
-        latitude: req.body.latitude,
-        type: req.body.type,
-        img: {
-          data: req.file.filename,
-          contentType: req.file.mimetype
-        }
-      })
-      newMarker.save().then(result => {
-        res.status(200).json({
-          msg: 'successfully uploaded'
-        })
-      }).catch(err => {
-        console.log(err);
+    else {
+      RequestedMarker.create(req.body, async(err, board) => {
+        if(err) return res.json(err);
+        return res.status(200).send({ requestedmarker: requestedmarker });
       })
     }
   })
-  
 });
 
 module.exports = router
