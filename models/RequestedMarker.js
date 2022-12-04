@@ -19,6 +19,9 @@ const RequestedMarkerSchema = mongoose.Schema(
       type: Number,
       default: 1,
     },
+    content: {
+      type: String,
+    },
     img: {
       data: Buffer,
       contentType: String,
