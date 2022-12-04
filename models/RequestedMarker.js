@@ -25,7 +25,11 @@ const RequestedMarkerSchema = mongoose.Schema(
     img: {
       data: Buffer,
       contentType: String,
-    }
+    },
+    userFrom: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
   },
   { timestamps: true }
 );

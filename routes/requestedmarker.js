@@ -30,6 +30,7 @@ router.post("/map/putMarkerDetail", (req, res) => {
         latitude: req.body.latitude,
         type: req.body.type,
         content: req.body.content,
+        userFrom : req.body.userFrom,
         img: {
           data: req.file.filename,
           contentType: req.file.mimetype

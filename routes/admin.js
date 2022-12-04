@@ -6,6 +6,7 @@ const router = express.Router();
 router.get("/admin", async(req,res)=>{
     RequestedMarker.find({})
         .sort("-createdAt")
+        .populate('userFrom','nickname')
         .exec((err, requestedmarker)=>{
             if (err) return res.json(err);
             console.log(requestedmarker)
