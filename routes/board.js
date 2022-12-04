@@ -47,16 +47,16 @@ router.delete("/board/:id", (req, res) => {
 
 //피드 전체 리스트
 router.get("/board", async(req, res) => {
-  // Board.find({})
-  //   .sort("-createdAt")
-  //   .exec((err, board) => {
-  //     if (err) return res.json(err);
-  //     return res.status(200).send({ board: board });
-  //   });
-    const board = await Board.find({})
+  Board.find({})
+    .sort("-createdAt")
+    .exec((err, board) => {
+      if (err) return res.json(err);
+      return res.status(200).send({ board: board });
+    });
+    // const board = await Board.find({})
 
-    Promise.all([Board.find({})])
-    .then(([boardtitle])=>{res.status(200).send({boardtitle : board.title})})
+    // Promise.all([Board.find({})])
+    // .then(([boardtitle])=>{res.status(200).send({boardtitle : board.title})})
 });
 
 

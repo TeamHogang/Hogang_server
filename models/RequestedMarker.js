@@ -20,10 +20,11 @@ const RequestedMarkerSchema = mongoose.Schema(
       default: 1,
     },
     img: {
-      type: String,
-      require: false,
+      data: Buffer,
+      contentType: String,
     }
   },
+  { timestamps: true }
 );
 
 const RequestedMarker = mongoose.model("RequestedMarker", RequestedMarkerSchema);
