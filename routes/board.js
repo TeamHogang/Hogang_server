@@ -31,17 +31,18 @@ router.get("/board/:id", async (req, res) => {
   // if (!user) return res.json(err);
   // const comment = [Comment.find({boardFrom : req.params.id})];
   // return res.status(200).send({ board: board, userEmail: user.email, comment: comment });
-  Promise.all([Comment.find({boardFrom: req.params.id}),
-              board,user])
-  .then(([comment,board,userEmail])=>{res.status(200).send({comment : comment, board: board, userEmail: user.email})})
-
+  Promise.all([Comment.find({boardFrom: req.params.id}).populate('userFrom','nickname'),
+              board,user.nickname])
+  .then(([comment,board,usernickname])=>{res.status(200).send({comment : comment, board: board, usernickname: usernickname})})
   
 });
 
 //피드 삭제
 router.delete("/board/:id", (req, res) => {
-  Board.deleteOne({ _id: req.params.id }, (req, res) => {
+  Board.deleteOne({ _id: req.params.id }, (req, res), (err) => {
     if (err) return res.json(err);
+
+    return res.status(200).send("ok");
   });
 });
 
@@ -53,10 +54,12 @@ router.get("/board", async(req, res) => {
       if (err) return res.json(err);
       return res.status(200).send({ board: board });
     });
+
     // const board = await Board.find({})
 
     // Promise.all([Board.find({})])
     // .then(([boardtitle])=>{res.status(200).send({boardtitle : board.title})})
+
 });
 
 

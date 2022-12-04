@@ -46,4 +46,7 @@ router.post("/map/putMarkerDetail", (req, res) => {
   })
 });
 
-module.exports = router
+
+
+module.exports =router
+
