@@ -62,5 +62,5 @@ router.get("/board", async(req, res) => {
 
 });
 
-
+// 검색기능
 module.exports = router;
