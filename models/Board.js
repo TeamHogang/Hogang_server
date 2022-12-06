@@ -20,7 +20,7 @@ const BoardSchema = mongoose.Schema(
   { timestamps: true }
   //게시물 작성 시간 기록
 );
-
+BoardSchema.index({title : ' text'});
 const Board = mongoose.model("Board", BoardSchema);
 
 module.exports = { Board };

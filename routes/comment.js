@@ -42,14 +42,4 @@ router.patch("/comment/:id", (req, res) => {
 });
 
 
-//피드 전체 리스트
-router.get("/board", (req, res) => {
-  Feed.find({})
-    .sort("-createdAt")
-    .exec((err, feeds) => {
-      if (err) return res.json(err);
-      return res.status(200).send({ board: board });
-    });
-});
-
 module.exports = router;
