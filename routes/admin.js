@@ -38,7 +38,7 @@ router.post("/admin/accept/:id", async (req, res) => {
     latitude: newmarker.latitude,
     type: 1,
     info: newmarker.content,
-    img: newmarker.img,
+    imgurl: newmarker.imgurl,
     userFrom: newmarker.userFrom,
   });
   RequestedMarker.deleteOne({ _id: req.params.id }, (err) => {
