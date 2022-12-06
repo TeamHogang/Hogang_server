@@ -6,7 +6,7 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");
-
+var MongoClient = require('mongodb').MongoClient;
 const fs = require("fs");
 const data = JSON.parse(fs.readFileSync("./data/non-smoking.json", "utf8"));
 
@@ -29,6 +29,15 @@ mongoose
   )
   .then(() => console.log("MongoDB Connected..."))
   .catch((err) => console.log(err));
+
+// var db;
+// MongoClient
+//   .connect("mongodb+srv://rkdgml:choi0730!A@cluster0.zctomf9.mongodb.net/?retryWrites=true&w=majority", function(err, client){
+//   if(err) {return console.log(err)};
+
+//   db = client.db('test');
+// })
+
 
 app.use(require("./routes/users"))
 app.use(require("./routes/board"))
