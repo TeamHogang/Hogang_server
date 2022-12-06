@@ -22,16 +22,12 @@ const RequestedMarkerSchema = mongoose.Schema(
     content: {
       type: String,
     },
-    img: {
-      data: Buffer,
-      contentType: String,
+    imgurl: {
+      type: String,
     },
     userFrom: {
       type: Schema.Types.ObjectId,
       ref: "User",
-    },
-    url: {
-      type: String,
     },
   },
   { timestamps: true }

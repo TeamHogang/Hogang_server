@@ -15,12 +15,8 @@ router.post("/map/putMarkerDetail", upload.single('img'), (req, res) => {
         latitude: req.body.latitude,
         type: req.body.type,
         content: req.body.content,
+        imgurl: req.file.location,
         userFrom: req.body.userFrom,
-        img: {
-          data: req.file.location,
-          contentType: req.file.mimetype,
-        },
-        url: res.req.file.path,
       });
       newMarker
         .save()
