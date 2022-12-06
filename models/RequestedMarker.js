@@ -22,9 +22,8 @@ const RequestedMarkerSchema = mongoose.Schema(
     content: {
       type: String,
     },
-    img: {
-      data: Buffer,
-      contentType: String,
+    imgurl: {
+      type: String,
     },
     userFrom: {
       type: Schema.Types.ObjectId,
@@ -34,5 +33,8 @@ const RequestedMarkerSchema = mongoose.Schema(
   { timestamps: true }
 );
 
-const RequestedMarker = mongoose.model("RequestedMarker", RequestedMarkerSchema);
+const RequestedMarker = mongoose.model(
+  "RequestedMarker",
+  RequestedMarkerSchema
+);
 module.exports = { RequestedMarker };

@@ -19,12 +19,18 @@ const MarkerSchema = mongoose.Schema(
       type: Number,
       default: 0,
     },
-    img: {
+    info: {
       type: String,
-      require: false,
-    }
-
+    },
+    imgurl: {
+      type: String,
+    },
+    userFrom: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
   },
+  { timestamps: true }
 );
 
 const Marker = mongoose.model("Marker", MarkerSchema);

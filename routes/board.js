@@ -142,4 +142,6 @@ router.get('/search', (req,res)=>{
   
 })
 })
+
+// 검색기능
 module.exports = router;
