@@ -1,28 +1,13 @@
 const express = require("express");
 const router = express.Router();
+const upload = require('../middleware/multer');
 const { RequestedMarker } = require("../models/RequestedMarker");
-const multer = require("multer");
 
-// storage
-const Storage = multer.diskStorage({
-  destination: 'uploads',
-  filename: (req, file, cb) => {
-    cb(null, file.originalname)
-  },
-});
-
-const upload = multer({
-  storage: Storage
-}).single('img')
-
-module.exports = upload
 // 마커 추가 요청
-router.post("/map/putMarkerDetail", (req, res) => {
-  upload(req, res, (err) => {
-    if(err){
-      console.log(err)
-    }
-    else{
+router.post("/map/putMarkerDetail", upload.single('img'), (req, res) => {
+      console.log(req.body);
+      console.log(req.file);
+      console.log(res.req.file);
       const newMarker = new RequestedMarker({
         prhsmkar: req.body.prhsmkar,
         prhsmknm: req.body.prhsmknm,
@@ -30,24 +15,24 @@ router.post("/map/putMarkerDetail", (req, res) => {
         latitude: req.body.latitude,
         type: req.body.type,
         content: req.body.content,
-        userFrom : req.body.userFrom,
+        userFrom: req.body.userFrom,
         img: {
-          data: req.file.filename,
-          contentType: req.file.mimetype
-        }
-      })
-      newMarker.save().then(result => {
-        res.status(200).json({
-          msg: 'successfully uploaded'
+          data: req.file.location,
+          contentType: req.file.mimetype,
+        },
+        url: res.req.file.path,
+      });
+      newMarker
+        .save()
+        .then((result) => {
+          res.status(200).json({
+            msg: "successfully uploaded",
+            img: req.file.location,
+          });
         })
-      }).catch(err => {
-        console.log(err);
-      })
-    }
-  })
-});
+        .catch((err) => {
+          console.log(err);
+        });
+    });
 
-
-
-module.exports =router
-
+module.exports = router;

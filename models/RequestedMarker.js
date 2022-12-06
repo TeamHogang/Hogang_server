@@ -30,9 +30,15 @@ const RequestedMarkerSchema = mongoose.Schema(
       type: Schema.Types.ObjectId,
       ref: "User",
     },
+    url: {
+      type: String,
+    },
   },
   { timestamps: true }
 );
 
-const RequestedMarker = mongoose.model("RequestedMarker", RequestedMarkerSchema);
+const RequestedMarker = mongoose.model(
+  "RequestedMarker",
+  RequestedMarkerSchema
+);
 module.exports = { RequestedMarker };

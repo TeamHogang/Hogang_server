@@ -19,6 +19,9 @@ const MarkerSchema = mongoose.Schema(
       type: Number,
       default: 0,
     },
+    info: {
+      type: String,
+    },
     img: {
       data: Buffer,
       contentType: String,
@@ -27,7 +30,6 @@ const MarkerSchema = mongoose.Schema(
       type: Schema.Types.ObjectId,
       ref: "User",
     },
-
   },
   { timestamps: true }
 );
