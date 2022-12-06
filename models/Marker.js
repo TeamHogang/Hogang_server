@@ -22,9 +22,8 @@ const MarkerSchema = mongoose.Schema(
     info: {
       type: String,
     },
-    img: {
-      data: Buffer,
-      contentType: String,
+    imgurl: {
+      type: String,
     },
     userFrom: {
       type: Schema.Types.ObjectId,
