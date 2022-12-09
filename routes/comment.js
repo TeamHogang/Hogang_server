@@ -28,6 +28,7 @@ router.post("/:id/comment", (req, res) => {
 router.delete("/comment/:id", (req, res)=>{
   Comment.deleteOne({_id: req.params.id}, (req, res) , (err)=>{
     if(err) return res.json(err);
+    return res.status(200).json({ success: true });
   })
 })
 
